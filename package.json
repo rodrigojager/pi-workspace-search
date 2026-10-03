@@ -1,0 +1,16 @@
+{
+  "name": "@rodrigojager/pi-workspace-search",
+  "version": "0.1.0",
+  "description": "Bounded workspace retrieval for Pi: ripgrep, optional local zvec-grep, then Jev classification.",
+  "type": "module",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/rodrigojager/pi-workspace-search.git" },
+  "keywords": ["pi-package", "pi", "semantic-search", "jev", "zvec-grep"],
+  "files": ["extensions", "lib", "skills", "README.md", "LICENSE"],
+  "pi": { "extensions": ["./extensions/index.ts"], "skills": ["./skills"] },
+  "engines": { "node": ">=22" },
+  "peerDependencies": { "@earendil-works/pi-coding-agent": ">=1.0.0", "@earendil-works/pi-ai": ">=1.0.0" },
+  "dependencies": { "@vscode/ripgrep": "^1.17.0" },
+  "devDependencies": { "typescript": "~7.0.2" },
+  "scripts": { "test": "node --test test/*.test.mjs", "check": "node --check lib/search.mjs && node --check lib/runtime.mjs && node --check lib/zvec-worker.mjs" }
+}

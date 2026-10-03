@@ -1,0 +1,11 @@
+import {pathToFileURL} from 'node:url';
+import path from 'node:path';
+import {mkdir} from 'node:fs/promises';
+const host=process.argv[2],agentDir=process.argv[3];if(!host||!agentDir)throw new Error('Pass Pi package and agent directory');
+const {ModelRuntime,ModelRegistry}=await import(pathToFileURL(path.join(host,'dist/index.js')).href);
+await mkdir('.validation',{recursive:true});
+const runtime=await ModelRuntime.create({authPath:path.join(agentDir,'auth.json'),modelsPath:null,modelsStorePath:path.resolve('.validation/models.json'),refreshOnCreate:false,allowModelNetwork:false});
+const registry=new ModelRegistry(runtime);
+const model=registry.findOfType('classifier','typesafe','jev-latest');
+const auth=registry.getProviderAuthStatus('typesafe');
+console.log(JSON.stringify({jevCatalogAvailable:!!model,authConfigured:auth.configured,authSource:auth.source??null}));
