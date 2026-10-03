@@ -1,6 +1,6 @@
 {
   "name": "@rodrigojager/pi-workspace-search",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Bounded workspace retrieval for Pi: ripgrep, optional local zvec-grep, then Jev classification.",
   "type": "module",
   "license": "MIT",

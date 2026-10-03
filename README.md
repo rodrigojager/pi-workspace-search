@@ -16,7 +16,7 @@ O zvec é opcional e recomendado. Sua ausência não impede a instalação nem a
 Requer **Pi 1.0+** com os pacotes `@earendil-works` e o classificador TypeSafe no catálogo, Node.js 22+ e npm. Versões antigas do Pi com `@mariozechner` não são compatíveis com esta versão. Não precisa instalar sgrep, jev-semgrep ou ripgrep separadamente.
 
 ```sh
-pi install git:github.com/rodrigojager/pi-workspace-search@v0.1.0
+pi install git:github.com/rodrigojager/pi-workspace-search@v0.1.1
 ```
 
 Em uma sessão já aberta, execute `/reload`. Então use `/search-setup`:
@@ -31,6 +31,8 @@ Para zvec, `/search-index` cria explicitamente um novo índice com `local/potion
 ## Uso
 
 O agente recebe `workspace_search`, `workspace_expand` e uma skill curta de roteamento. As ferramentas nativas do Pi continuam disponíveis. A extensão orienta a preferência por buscas limitadas, mas não bloqueia `read` ou `bash`.
+
+A [skill em inglês](skills/workspace-search/SKILL.md) ensina um agente de baixo custo a buscar, expandir trechos, avaliar se a fonte sustenta a resposta e devolver `ACCEPTED` ou `NEEDS_NATIVE_SEARCH`. Ela traz exemplos das ferramentas, um orçamento padrão de chamadas e um contrato compacto de evidências para repassar ao agente principal. A skill não escolhe nem inicia um modelo; pode ser usada pelo agente que você já configurou. Para invocá-la no Pi: `/skill:workspace-search sua pergunta sobre o projeto`.
 
 ```json
 {"query":"fetchWithRetry","mode":"exact","scope":"src"}
